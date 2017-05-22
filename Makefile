@@ -57,7 +57,7 @@ migrate: get-assets
 	
 	
 	@echo "Copying over mongoid doc files"
-	cp -r build/mongoid-master/docs/* ${TARGET_DIR}/
+	cp -r build/mongoid-5.2.0/docs/* ${TARGET_DIR}/
 
 # This gets the docs-tools and the mongoid docs from the mongoid repo.
 # the assets are defined in the config/build_conf.yaml

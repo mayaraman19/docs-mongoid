@@ -10,8 +10,8 @@ project:
   title: 'Mongoid Manual'
   branched: true
 version:
-  release: '6.1'
-  branch: 'master'
+  release: 'v5.2'
+  branch: 'v5.2'
 system:
   runstate:
     serial_sphinx: publish
@@ -25,17 +25,16 @@ assets:
   - branch: master
     path: build/docs-tools
     repository: https://github.com/mongodb/docs-tools.git
-  - branch: master
-    path: build/mongoid-master
+  - branch: 5.2.0-stable
+    path: build/mongoid-5.2.0  
     repository: https://github.com/mongodb/mongoid.git
 paths:
   output: 'build'
-  source: 'source-master'
-  includes: 'source-master/includes'
-  images: 'source-master/images'
+  source: 'source-v5.2'
+  includes: 'source-v5.2/includes'
+  images: 'source-v5.2/images'
   tools: 'bin'
   buildsystem: 'build/docs-tools'
   builddata: 'config'
   locale: 'locale'
-
 ...
