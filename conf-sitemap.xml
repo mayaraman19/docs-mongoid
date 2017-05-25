@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site
   base_url="https://docs.mongodb.com/ruby-driver/5.2/"
-  store_into="build/v5.2/sitemap.xml.gz"
+  store_into="build/5.2/sitemap.xml.gz"
   verbose="1"
   >
 
 <directory
-	path="build/public/v5.2/"
+	path="build/public/5.2/"
 	url="https://docs.mongodb.com/ruby-driver/5.2/"
 	default_file="index.html"
 	/>
