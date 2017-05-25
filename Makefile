@@ -38,19 +38,20 @@ publish: migrate
 	if [ -d build/public/${GIT_BRANCH}/api ]; then rm -rf build/public/${GIT_BRANCH}/api ; fi;
 	mkdir build/public/${GIT_BRANCH}/api
 
-	yard doc build/mongoid-master/ -o build/public/${GIT_BRANCH}/api/
+	yard doc build/mongoid-5.2.0/   --readme build/mongoid-5.2.0/README.md -o build/public/${GIT_BRANCH}/api/
+
 
 stage:
 	mut-publish build/${GIT_BRANCH}/html ${STAGING_BUCKET} --prefix=${PREFIX} --stage ${ARGS}
 	@echo "Hosted at ${STAGING_URL}/${PREFIX}/${USER}/${GIT_BRANCH}/index.html"
 
-fake-deploy: build/public/${GIT_BRANCH}
-	mut-publish build/public/ ${STAGING_BUCKET} --prefix=${PREFIX} --deploy --verbose  ${ARGS}
+fake-deploy: build/public/${GIT_BRANCH} 
+	mut-publish build/public ${STAGING_BUCKET} --prefix=${PREFIX} --deploy --verbose  ${ARGS}
 	@echo "Hosted at ${STAGING_URL}/${PREFIX}/${GIT_BRANCH}/index.html"
 
-deploy: build/public/${GIT_BRANCH}
+deploy: build/public/${GIT_BRANCH} 
 	@echo "Doing a dry-run"
-	mut-publish build/public ${PRODUCTION_BUCKET} --prefix=${PREFIX} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
+	mut-publish build/public/ ${PRODUCTION_BUCKET} --prefix=${PREFIX} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
 
 	@echo ''
 	read -p "Press any key to perform the previous upload to ${PRODUCTION_BUCKET}"
@@ -68,7 +69,8 @@ api-docs:
 	if [ -d build/public/${GIT_BRANCH}/api ]; then rm -rf build/public/${GIT_BRANCH}/api ; fi;
 	mkdir build/public/${GIT_BRANCH}/api
 
-	yard doc build/mongoid-master/ -o build/public/${GIT_BRANCH}/api/
+	yard doc build/mongoid-5.2.0/   --readme build/mongoid-5.2.0/README.md -o build/public/${GIT_BRANCH}/api/
+
 
 migrate: get-assets
 	@echo "Making target source directory"
@@ -77,7 +79,7 @@ migrate: get-assets
 	
 	
 	@echo "Copying over mongoid doc files"
-	cp -r build/mongoid-5.2.0/docs/* ${TARGET_DIR}/
+	cp -r build/mongoid-master/docs/* ${TARGET_DIR}/
 
 # This gets the docs-tools and the mongoid docs from the mongoid repo.
 # the assets are defined in the config/build_conf.yaml
