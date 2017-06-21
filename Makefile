@@ -10,7 +10,7 @@ STAGING_BUCKET=docs-mongodb-org-staging
 PRODUCTION_BUCKET=docs-ruby-driver
 
 PREFIX=mongoid
-TARGET_DIR=source-${GIT_BRANCH}
+TARGET_DIR=source-v${GIT_BRANCH}
 
 SOURCE_FILE_DIR=build/mongoid-5.2.0
 
